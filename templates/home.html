@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Home | My Django Website{% endblock %}
+
+{% block content %}
+    <h1>Welcome to my first Django website!</h1>
+    <p>I am learning Django templates step by step.</p>
+{% endblock %}
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Django Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .card {
+            background: white;
+            max-width: 600px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 15px;
+        }
+
+        a {
+            color: #2563eb;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card" style="height: 250px;width: 300px;color: black; background-color: hsl(77, 85%, 79%); border-radius: 15px; padding: 20px; margin: auto;">
+        <body style="background-color: #8379f0;">
+        <h1>Welcome, {{ name }}!</h1>
+        <p>Course: {{ course }}</p>
+        <ul>
+            {% for topic in topics %}
+                <li>{{ topic }}</li>
+            {% endfor %}
+        </ul>
+
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+
+        {% if completed %}
+            <p>You have completed the course!</p>
+        {% else %}
+            <p>Your course is still in progress.</p>
+        {% endif %}
+    </div>
+</body>
+</html> -->
+    
+   

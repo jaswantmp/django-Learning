@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student List</title>
+</head>
+<body bgcolor="lightgreen">
+    <h1>Student List</h1>
+
+    {% for student in students %}
+        <div>
+            <h2>{{ student.name }}</h2>
+            <p>Marks: {{ student.marks }}</p>
+
+            {% if student.marks >= 50 %}
+                <p>Result: Pass</p>
+            {% else %}
+                <p>Result: Fail</p>
+            {% endif %}
+        </div>
+        <hr>
+    {% endfor %}
+</body>
+</html>

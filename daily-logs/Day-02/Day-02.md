@@ -41,13 +41,13 @@ To create an About page in Django, configure URL routing and views, connect HTML
 ## 3. Output Screenshots
 
 ### Screenshot 1: About Page
-![About Page](../screenshots/aboutpage.png)
+![About Page](screenshots/aboutpage.png)
 
 ### Screenshot 2: Home Page
-![Home Page](../screenshots/homepage.png)
+![Home Page](screenshots/homepage.png)
 
 ### Screenshot 3: Project Structure
-![Structure](../screenshots/structure.png)
+![Structure](screenshots/structure.png)
 
 ## 4. Key Learnings
 - Creating multiple pages in Django.

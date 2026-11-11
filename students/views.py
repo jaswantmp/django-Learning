@@ -1,12 +1,8 @@
 from django.shortcuts import render
+from .models import Student
 
 def student_home(request):
-    students = [
-        {"name": "Arun", "marks": 85},
-        {"name": "Priya", "marks": 92},
-        {"name": "Kumar", "marks": 42},
-        {"name": "Divya", "marks": 76}
-    ]
+    students = Student.objects.all()
 
     return render(
         request,

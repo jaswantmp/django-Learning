@@ -3,12 +3,13 @@
 <head>
     <title>Student List</title>
 </head>
-<body bgcolor="lightgreen">
+<body style="background-color: #ded981; font-family: Arial, sans-serif; padding: 20px;">
     <h1>Student List</h1>
 
     {% for student in students %}
         <div>
             <h2>{{ student.name }}</h2>
+            <p>Age: {{ student.age }}</p>
             <p>Marks: {{ student.marks }}</p>
 
             {% if student.marks >= 50 %}
@@ -18,6 +19,9 @@
             {% endif %}
         </div>
         <hr>
+    {% empty %}
+        <p>No students found.</p>
     {% endfor %}
+
 </body>
 </html>

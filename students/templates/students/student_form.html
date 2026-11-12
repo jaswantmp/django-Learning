@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+</head>
+<body style="background-color: rgb(231, 242, 191); font-family: Arial, sans-serif; padding: 20px;">
+    <h1>Student Registration</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <!-- <label>Student Name:</label>
+        <input type="text" name="name" required>
+        <br><br>
+
+        <label>Age:</label>
+        <input type="number" name="age" required>
+        <br><br>
+
+        <label>Marks:</label>
+        <input type="number" name="marks" required>
+        <br><br> -->
+        {{ form.as_p }}
+
+
+        <button type="submit">Register Student</button>
+    </form>
+</body>
+</html>

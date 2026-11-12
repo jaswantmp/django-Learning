@@ -4,6 +4,14 @@
     <title>Student List</title>
 </head>
 <body style="background-color: #ded981; font-family: Arial, sans-serif; padding: 20px;">
+
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    
+
     <h1>Student List</h1>
 
     {% for student in students %}

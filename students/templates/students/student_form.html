@@ -1,30 +1,179 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Student Registration</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f4f6f9;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        h1, h2 {
+            color: #343a40;
+        }
+
+        .subject-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        input {
+            padding: 9px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .subject-row input {
+            flex: 1;
+            min-width: 0;
+        }
+
+        button {
+            padding: 9px 13px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .edit-btn {
+            background: #ffc107;
+            color: black;
+        }
+
+        .delete-btn {
+            background: #dc3545;
+            color: white;
+        }
+
+        .add-btn, .save-btn {
+            background: #198754;
+            color: white;
+        }
+
+        .message {
+            margin-bottom: 12px;
+            color: #198754;
+        }
+
+        .error {
+            color: #dc3545;
+        }
+
+        hr {
+            margin: 25px 0;
+        }
+
+        @media (max-width: 500px) {
+            body {
+                margin: 10px;
+            }
+
+            .subject-row {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
 </head>
-<body style="background-color: rgb(231, 242, 191); font-family: Arial, sans-serif; padding: 20px;">
-    <h1>Student Registration</h1>
+
+<body>
+<div class="container">
+
+    <h1>Edit Student</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="message">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <h2>Student Details</h2>
 
     <form method="POST">
         {% csrf_token %}
 
-        <!-- <label>Student Name:</label>
-        <input type="text" name="name" required>
-        <br><br>
-
-        <label>Age:</label>
-        <input type="number" name="age" required>
-        <br><br>
-
-        <label>Marks:</label>
-        <input type="number" name="marks" required>
-        <br><br> -->
         {{ form.as_p }}
 
+        <button type="submit" name="action" value="save_student"
+                class="save-btn">
+            Save Student Details
+        </button>
 
-        <button type="submit">Register Student</button>
+        <hr>
+
+        <h2>Manage Subjects</h2>
+
+        {% for subject in subjects %}
+            <div class="subject-row">
+                <input
+                    type="text"
+                    name="subject_name_{{ subject.id }}"
+                    value="{{ subject.name }}"
+                    aria-label="Subject name"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    name="action"
+                    value="update_subject"
+                    class="edit-btn"
+                    onclick="this.form.subject_id.value='{{ subject.id }}'">
+                    Update
+                </button>
+
+                <button
+                    type="submit"
+                    name="action"
+                    value="delete_subject"
+                    class="delete-btn"
+                    onclick="this.form.subject_id.value='{{ subject.id }}';
+                             return confirm('Delete this subject?')">
+                    Delete
+                </button>
+            </div>
+        {% empty %}
+            <p>No subjects added yet.</p>
+        {% endfor %}
+
+        <input type="hidden" name="subject_id" value="">
+
+        <hr>
+
+        <h2>Add New Subject</h2>
+
+        <div class="subject-row">
+            <input
+                type="text"
+                name="new_subject_name"
+                placeholder="Enter subject name"
+                aria-label="New subject name"
+            >
+
+            <button type="submit" name="action" value="add_subject"
+                    class="add-btn">
+                Add Subject
+            </button>
+        </div>
     </form>
+
+    <p>
+        <a href="{% url 'student_home' %}">Back to Student List</a>
+    </p>
+
+</div>
 </body>
 </html>

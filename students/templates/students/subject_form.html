@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Subject</title>
+</head>
+<body style="background-color: rgb(232, 247, 181); font-family: Arial, sans-serif; padding: 20px;">
+    <h1>Add Subject</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Add Subject</button>
+    </form>
+
+    <a href="{% url 'student_home' %}">Back to Student List</a>
+</body>
+</html>

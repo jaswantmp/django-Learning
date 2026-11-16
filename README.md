@@ -1,358 +1,166 @@
-# Django Learning — Student Management System 🐍
+# Django Learning Journey
 
-Welcome to my Django learning journey! This repository documents my day-by-day progress in learning Django, Python web development, database operations, and practical backend development.
+A hands-on Django project documenting my daily learning journey in Python web development. I am building a Student Management System while learning Django fundamentals, database operations, forms, validation, and ORM relationships.
 
-As part of this journey, I am building a **Student Management System** to practise Django concepts through a working project while preparing for technical interviews and placements.
+**GitHub Repository:** https://github.com/jaswantmp/django-Learning
 
-**Repository:** [django-Learning](https://github.com/jaswantmp/django-Learning)
+## Project Overview
 
----
+The Student Management System is a Django web application that manages student records and their associated subjects. It provides CRUD operations, form validation, student result calculation, and subject management.
 
-## 🎯 Project Overview
+## Features
 
-The Student Management System is a Django web application that allows users to manage student records. It demonstrates how Django connects Python code, databases, HTML templates, forms, and views to build a dynamic web application.
+- **Student Management:** Create, view, update, and delete student records.
+- **Form Validation:** Validate student names, ages, and marks using Django ModelForms.
+- **Student Results:** Automatically display Pass or Fail based on marks.
+- **Django Admin:** Manage student and subject records through the admin interface.
+- **Admin Search and Filters:** Search student names and filter records.
+- **Subject Management:** Associate subjects with students using ForeignKey relationships.
+- **Subject CRUD:** Add, update, and delete subjects from the student edit page.
+- **Django ORM:** Filter, sort, exclude, and aggregate database records.
+- **Success Messages:** Display feedback after successful operations.
+- **Responsive Table:** Display student records in a styled HTML table.
 
-### Features
+## Technologies Used
 
-- Display student records in a structured table.
-- Register new students.
-- Update existing student details.
-- Delete student records with a confirmation page.
-- Validate form inputs using Django ModelForms.
-- Display success messages after operations.
-- Show student results based on marks.
-- Manage student records through Django Admin.
-- Customize Admin list columns.
-- Search students by name in Django Admin.
-- Filter student records by age and marks.
-- Query, filter, sort, and aggregate database records using Django ORM.
+- Python
+- Django
+- SQLite
+- HTML
+- CSS
+- Django Template Language
+- Git and GitHub
 
----
+## Project Structure
 
-## 🛠️ Technologies Used
+```text
+django-learning/
+├── manage.py
+├── mysite/
+│   ├── settings.py
+│   └── urls.py
+├── students/
+│   ├── admin.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── urls.py
+│   ├── views.py
+│   └── templates/
+│       └── students/
+│           ├── student_home.html
+│           ├── student_form.html
+│           └── student_confirm_delete.html
+├── templates/
+├── daily-logs/
+│   ├── Day-05/
+│   ├── Day-06/
+│   ├── Day-07/
+│   └── Day-08/
+├── requirements.txt
+├── .gitignore
+└── README.md
+```
 
-| Technology | Purpose |
-|---|---|
-| Python | Main programming language |
-| Django | Web framework |
-| SQLite | Database |
-| HTML | Page structure |
-| CSS | Page styling |
-| Django Templates | Dynamic HTML rendering |
-| Django ORM | Database queries and operations |
-| Git | Version control |
-| GitHub | Source code and learning documentation |
-| VS Code | Development environment |
+The exact files and daily-log folders may evolve as the project develops.
 
----
+## Setup and Installation
 
-## 🚀 Getting Started
-
-Follow these steps to run the project locally.
-
-### 1. Clone the Repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/jaswantmp/django-Learning.git
 cd django-Learning
 ```
 
-### 2. Create a Virtual Environment
+### 2. Create a virtual environment
 
 ```bash
 python -m venv .venv
 ```
 
-### 3. Activate the Virtual Environment
+### 3. Activate the environment
 
-**Windows PowerShell:**
+Windows PowerShell:
 
 ```powershell
 .venv\Scripts\Activate.ps1
 ```
 
-If you are using Command Prompt:
-
-```cmd
-.venv\Scripts\activate.bat
-```
-
-### 4. Install Dependencies
+### 4. Install dependencies
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-### 5. Apply Database Migrations
+### 5. Apply database migrations
 
 ```bash
 python manage.py migrate
 ```
 
-### 6. Create an Admin Account
+### 6. Create an admin account
 
 ```bash
 python manage.py createsuperuser
 ```
 
-Follow the prompts to create your username and password.
+Follow the prompts to create your account.
 
-### 7. Run the Development Server
+### 7. Start the development server
 
 ```bash
 python manage.py runserver
 ```
 
-Open the application in your browser:
+Open the application at http://127.0.0.1:8000/students/ and the admin interface at http://127.0.0.1:8000/admin/.
 
-- Home page: `http://127.0.0.1:8000/`
-- About page: `http://127.0.0.1:8000/about/`
-- Student Management: `http://127.0.0.1:8000/students/`
-- Django Admin: `http://127.0.0.1:8000/admin/`
+> **Note:** The local SQLite database and its records are not included in the repository. Create or register your own data when setting up the project.
 
-**Note:** The development server runs locally. Create an admin account before accessing the Admin interface. Student records in the local SQLite database are not included when cloning the repository.
+## Learning Progress
 
----
-
-## 📚 Concepts Learned
-
-### 1. Django Fundamentals
-
-- Introduction to Django and its architecture.
-- Difference between a Django project and an app.
-- Project setup and virtual environment management.
-- Django settings and URL configuration.
-- Views and HTTP responses.
-- Rendering HTML templates.
-- Passing context data from views to templates.
-- Template variables, conditions, loops, and inheritance.
-
-### 2. Models and Database
-
-- Creating Django models.
-- Defining model fields.
-- Applying database migrations.
-- Understanding database records and primary keys.
-- Retrieving records using Django ORM.
-- Understanding the relationship between models and databases.
-
-### 3. Forms and Validation
-
-- Creating forms using `forms.ModelForm`.
-- Handling GET and POST requests.
-- Processing form submissions.
-- Using CSRF protection.
-- Adding custom validation methods.
-- Displaying validation errors.
-- Showing success messages after successful operations.
-
-### 4. CRUD Operations
-
-CRUD stands for Create, Read, Update, and Delete.
-
-| Operation | Implementation |
+| Day | Topics |
 |---|---|
-| Create | Register a student |
-| Read | Display student records |
-| Update | Edit student details |
-| Delete | Delete a student after confirmation |
+| Day 1 | Introduction to Django |
+| Day 2 | Project setup and Django fundamentals |
+| Day 3 | Apps, URLs, views, templates, and template context |
+| Day 4 | Student Management System development |
+| Day 5 | Django Forms, ModelForms, validation, and messages |
+| Day 6 | CRUD operations and student table improvements |
+| Day 7 | Django Admin customization and ORM queries |
+| Day 8 | ForeignKey relationships and subject management |
 
-Additional features include a styled student table, result calculation based on marks, action links, and success notifications.
+Daily notes and screenshots are maintained in the `daily-logs/` directory when available.
 
-### 5. Django Admin Customization
+## Key Concepts Learned
 
-Customized the built-in Django Admin interface to make student records easier to manage.
+- Django project and app structure
+- URL routing and view functions
+- Rendering templates with context data
+- Django Template Language loops and conditions
+- Models and database migrations
+- ModelForms and server-side validation
+- CRUD operations
+- Django Admin customization
+- ORM filtering, sorting, exclusion, and aggregation
+- ForeignKey relationships
+- Git version control and GitHub
 
-Implemented features:
+## Future Improvements
 
-- `list_display` to display ID, name, age, and marks.
-- `search_fields` to search student records by name.
-- `list_filter` to filter student records by age and marks.
+- Add authentication and role-based access.
+- Improve form styling and responsive design.
+- Add subject validation and duplicate prevention.
+- Add pagination and advanced student search.
+- Write automated tests.
+- Improve error handling and security.
+- Explore deployment.
 
-Example configuration in `students/admin.py`:
-
-```python
-from django.contrib import admin
-from .models import Student
-
-
-@admin.register(Student)
-class StudentAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "age", "marks")
-    search_fields = ("name",)
-    list_filter = ("age", "marks")
-```
-
-### 6. Django ORM Query Practice
-
-Practised querying student records using the Django shell.
-
-**Filtering and excluding records**
-
-```python
-Student.objects.filter(marks__gt=80)
-Student.objects.filter(marks__gte=40)
-Student.objects.filter(marks__lt=40)
-Student.objects.exclude(age__gt=18)
-```
-
-**Combining conditions using `Q` objects**
-
-```python
-from django.db.models import Q
-
-Student.objects.filter(
-    Q(marks__gt=70) | Q(age__gt=20)
-)
-```
-
-**Sorting and limiting results**
-
-```python
-Student.objects.order_by("age")
-Student.objects.order_by("-marks")[:3]
-Student.objects.order_by("-marks").first()
-```
-
-**Aggregate functions**
-
-```python
-from django.db.models import Max, Avg, Sum
-
-Student.objects.aggregate(Max("marks"))
-Student.objects.aggregate(Avg("marks"))
-Student.objects.aggregate(Sum("marks"))
-Student.objects.count()
-```
-
-These queries demonstrate filtering, exclusion, conditional logic, sorting, limiting results, and calculating database statistics.
-
----
-
-## 📅 Daily Learning Logs
-
-I maintain separate Markdown files and screenshots to document each day's learning.
-
-| Day | Topics | Documentation |
-|---|---|---|
-| Day 1 | Django introduction and fundamentals | [Day 1](daily-logs/Day-01/Day-01.md) |
-| Day 2 | Project setup and Django basics | [Day 2](daily-logs/Day-02/Day-02.md) |
-| Day 3 | Django apps, URLs, views, templates, context, conditions, and loops | [Day 3](daily-logs/Day-03/Day-03.md) |
-| Day 4 | Student management development | [Day 4](daily-logs/Day-04/Day-04.md) |
-| Day 5 | Django forms and validation | [Day 5](daily-logs/Day-05/Day-05.md) |
-| Day 6 | CRUD operations and student table improvements | [Day 6](daily-logs/Day-06/Day-06.md) |
-| Day 7 | Django Admin customization and ORM query practice | [Day 7](daily-logs/Day-07/Day-07.md) |
-
-Each daily log includes explanations, code examples, learning outcomes, and screenshots where applicable.
-
----
-
-## 📁 Project Structure
-
-```text
-django-Learning/
-│
-├── manage.py
-├── requirements.txt
-├── README.md
-├── .gitignore
-│
-├── mysite/
-│   ├── __init__.py
-│   ├── settings.py
-│   ├── urls.py
-│   ├── asgi.py
-│   └── wsgi.py
-│
-├── students/
-│   ├── migrations/
-│   ├── templates/
-│   │   └── students/
-│   │       ├── student_home.html
-│   │       ├── student_form.html
-│   │       └── student_confirm_delete.html
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── forms.py
-│   ├── models.py
-│   ├── tests.py
-│   ├── urls.py
-│   └── views.py
-│
-├── templates/
-│   ├── base.html
-│   ├── home.html
-│   └── about.html
-│
-└── daily-logs/
-    ├── Day-01/
-    ├── Day-02/
-    ├── Day-03/
-    ├── Day-04/
-    ├── Day-05/
-    │   ├── Day-05.md
-    │   └── screenshots/
-    ├── Day-06/
-    │   ├── Day-06.md
-    │   └── screenshots/
-    └── Day-07/
-        ├── Day-07.md
-        └── screenshots/
-```
-
-*The structure above represents the expected learning-project layout; optional files and folders may vary as development continues.*
-
----
-
-## 🗄️ Database
-
-The project uses SQLite, Django's default database for a new project.
-
-The `Student` model contains:
-
-| Field | Type | Description |
-|---|---|---|
-| `id` | Auto-generated primary key | Unique student identifier |
-| `name` | `CharField` | Student name |
-| `age` | `IntegerField` | Student age |
-| `marks` | `IntegerField` | Student marks |
-
-Database migrations are maintained in the app's `migrations/` directory. The local database file is excluded from version control.
-
----
-
-## 🔒 Security and Best Practices
-
-- Use Django's CSRF protection for POST forms.
-- Validate user input before saving records.
-- Use Django's ORM instead of constructing unsafe SQL queries manually.
-- Keep virtual environments and local database files out of Git.
-- Never commit passwords, secret keys, or other sensitive credentials.
-- Use a development server only for local development, not production deployment.
-
----
-
-## 🎯 Future Learning Goals
-
-- Advanced Django ORM queries.
-- Relationships between models using foreign keys.
-- Pagination and improved search on website pages.
-- User authentication and permissions.
-- Django REST Framework and API development.
-- Automated testing.
-- Deployment and production configuration.
-- Placement-oriented Django and Python interview practice.
-
----
-
-## 👨‍💻 Author
+## Author
 
 **Jaswant MP**
 
-- GitHub: [@jaswantmp](https://github.com/jaswantmp)
-- LinkedIn: [Jaswant MP](https://www.linkedin.com/in/jaswant-mp-a32b81378/)
+- GitHub: https://github.com/jaswantmp
+- LinkedIn: https://www.linkedin.com/in/jaswant-mp-a32b81378/
+- LeetCode: https://leetcode.com/u/jaswantmp/
 
----
-
-⭐ This repository is a continuous record of my Django learning journey, practical implementation, and preparation for backend development opportunities.
+This repository is a learning project developed incrementally to build practical Django and web development skills.

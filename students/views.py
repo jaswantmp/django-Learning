@@ -40,14 +40,21 @@ def student_update(request, student_id):
         if action == "add_subject":
             name = request.POST.get("new_subject_name", "").strip()
 
-            if name:
-                Subject.objects.create(
-                    name=name,
-                    student=student
-                )
-                messages.success(request, "Subject added successfully!")
-            else:
+            if not name:
                 messages.error(request, "Subject name cannot be empty.")
+            elif len(name) > 100:
+                messages.error(
+                    request,
+                    "Subject name cannot exceed 100 characters."
+                )
+            elif student.subjects.filter(name__iexact=name).exists():
+                messages.error(
+                    request,
+                    "This student already has this subject."
+                )
+            else:
+                Subject.objects.create(name=name, student=student)
+                messages.success(request, "Subject added successfully!")
 
             return redirect("student_update", student_id=student.id)
 
@@ -62,14 +69,33 @@ def student_update(request, student_id):
                 f"subject_name_{subject.id}", ""
             ).strip()
 
-            if name:
-                subject.name = name
-                subject.save()
-                messages.success(request, "Subject updated successfully!")
-            else:
+            if not name:
                 messages.error(request, "Subject name cannot be empty.")
 
+            elif len(name) > 100:
+                messages.error(
+                    request,
+                    "Subject name cannot exceed 100 characters."
+                )
+
+            elif student.subjects.filter(
+                name__iexact=name
+            ).exclude(id=subject.id).exists():
+                messages.error(
+                    request,
+                    f'You can\'t rename this subject to "{name}" because it already exists for this student.'
+                )
+
+            else:
+                subject.name = name
+                subject.save()
+                messages.success(
+                    request,
+                    "Subject updated successfully!"
+                )
+
             return redirect("student_update", student_id=student.id)
+
 
         # Delete an existing subject
         elif action == "delete_subject":

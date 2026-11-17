@@ -36,6 +36,19 @@ class StudentForm(forms.ModelForm):
             )
 
         return marks
+    def clean(self):
+        cleaned_data = super().clean()
+
+        age = cleaned_data.get("age")
+        marks = cleaned_data.get("marks")
+
+        if age is not None and marks is not None:
+            if marks > 90 and age < 18:
+                raise forms.ValidationError(
+                    "Students under 18 cannot have marks above 90."
+                )
+
+        return cleaned_data
 class SubjectForm(forms.ModelForm):
     class Meta:
         model = Subject

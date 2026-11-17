@@ -2,24 +2,26 @@
 
 A hands-on Django project documenting my daily learning journey in Python web development. I am building a Student Management System while learning Django fundamentals, database operations, forms, validation, and ORM relationships.
 
-**GitHub Repository:** https://github.com/jaswantmp/django-Learning
+**GitHub Repository:** [django-Learning](https://github.com/jaswantmp/django-Learning)
 
 ## Project Overview
 
-The Student Management System is a Django web application that manages student records and their associated subjects. It provides CRUD operations, form validation, student result calculation, and subject management.
+The Student Management System is a Django web application that manages student records and their associated subjects. It supports CRUD operations, form validation, student result calculation, and subject management.
 
 ## Features
 
 - **Student Management:** Create, view, update, and delete student records.
 - **Form Validation:** Validate student names, ages, and marks using Django ModelForms.
-- **Student Results:** Automatically display Pass or Fail based on marks.
+- **Student Results:** Display Pass or Fail based on student marks.
 - **Django Admin:** Manage student and subject records through the admin interface.
 - **Admin Search and Filters:** Search student names and filter records.
-- **Subject Management:** Associate subjects with students using ForeignKey relationships.
+- **Subject Management:** Associate subjects with students using `ForeignKey` relationships.
 - **Subject CRUD:** Add, update, and delete subjects from the student edit page.
-- **Django ORM:** Filter, sort, exclude, and aggregate database records.
+- **Duplicate Prevention:** Validate subject names to prevent duplicates for the same student.
+- **Django ORM:** Filter, sort, exclude, and retrieve database records.
 - **Success Messages:** Display feedback after successful operations.
 - **Responsive Table:** Display student records in a styled HTML table.
+- **Automated Testing:** Practise testing Django models and views.
 
 ## Technologies Used
 
@@ -43,6 +45,7 @@ django-learning/
 │   ├── admin.py
 │   ├── forms.py
 │   ├── models.py
+│   ├── tests.py
 │   ├── urls.py
 │   ├── views.py
 │   └── templates/
@@ -51,34 +54,36 @@ django-learning/
 │           ├── student_form.html
 │           └── student_confirm_delete.html
 ├── templates/
+├── screenshots/
 ├── daily-logs/
 │   ├── Day-05/
 │   ├── Day-06/
 │   ├── Day-07/
-│   └── Day-08/
+│   ├── Day-08/
+│   └── DAY9_LOG.md
 ├── requirements.txt
 ├── .gitignore
 └── README.md
 ```
 
-The exact files and daily-log folders may evolve as the project develops.
+*Note: The exact project structure may evolve as development continues. Keep the daily log path consistent with its actual location in the repository.*
 
 ## Setup and Installation
 
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/jaswantmp/django-Learning.git
 cd django-Learning
 ```
 
-### 2. Create a virtual environment
+### 2. Create a Virtual Environment
 
 ```bash
 python -m venv .venv
 ```
 
-### 3. Activate the environment
+### 3. Activate the Environment
 
 Windows PowerShell:
 
@@ -86,39 +91,42 @@ Windows PowerShell:
 .venv\Scripts\Activate.ps1
 ```
 
-### 4. Install dependencies
+### 4. Install Dependencies
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-### 5. Apply database migrations
+### 5. Apply Database Migrations
 
 ```bash
 python manage.py migrate
 ```
 
-### 6. Create an admin account
+### 6. Create an Admin Account
 
 ```bash
 python manage.py createsuperuser
 ```
 
-Follow the prompts to create your account.
+Follow the prompts to create your administrator account.
 
-### 7. Start the development server
+### 7. Start the Development Server
 
 ```bash
 python manage.py runserver
 ```
 
-Open the application at http://127.0.0.1:8000/students/ and the admin interface at http://127.0.0.1:8000/admin/.
+Open the application:
 
-> **Note:** The local SQLite database and its records are not included in the repository. Create or register your own data when setting up the project.
+- Student Management: [http://127.0.0.1:8000/students/](http://127.0.0.1:8000/students/)
+- Django Admin: [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)
+
+> **Note:** The local SQLite database and its records are not included in the repository. Run migrations and create your own data after setting up the project.
 
 ## Learning Progress
 
-| Day | Topics |
+| Day | Topics Covered |
 |---|---|
 | Day 1 | Introduction to Django |
 | Day 2 | Project setup and Django fundamentals |
@@ -128,8 +136,25 @@ Open the application at http://127.0.0.1:8000/students/ and the admin interface 
 | Day 6 | CRUD operations and student table improvements |
 | Day 7 | Django Admin customization and ORM queries |
 | Day 8 | ForeignKey relationships and subject management |
+| Day 9 | ORM relationships, uniqueness constraints, subject validation, and form validation |
 
-Daily notes and screenshots are maintained in the `daily-logs/` directory when available.
+## Day 9 — Screenshots
+
+### Student Name Cannot Be Empty
+
+![Student Name Cannot Be Empty](screenshots/student_name_cannot_be_empty.png)
+
+### Student Already Exists
+
+![Student Already Exists](screenshots/student_already_exists.png)
+
+### Form Validation and ORM
+
+![Form Validation and ORM](screenshots/form_validation_orm.png)
+
+### Tests.py in Terminal
+
+![Tests.py in Terminal](screenshots/tests_py_in_terminal.png)
 
 ## Key Concepts Learned
 
@@ -143,15 +168,17 @@ Daily notes and screenshots are maintained in the `daily-logs/` directory when a
 - Django Admin customization
 - ORM filtering, sorting, exclusion, and aggregation
 - ForeignKey relationships
+- Database uniqueness constraints
 - Git version control and GitHub
+- Introduction to automated testing
 
 ## Future Improvements
 
 - Add authentication and role-based access.
 - Improve form styling and responsive design.
-- Add subject validation and duplicate prevention.
+- Strengthen subject validation and duplicate prevention.
 - Add pagination and advanced student search.
-- Write automated tests.
+- Expand automated tests for models, views, and form submissions.
 - Improve error handling and security.
 - Explore deployment.
 
@@ -159,8 +186,8 @@ Daily notes and screenshots are maintained in the `daily-logs/` directory when a
 
 **Jaswant MP**
 
-- GitHub: https://github.com/jaswantmp
-- LinkedIn: https://www.linkedin.com/in/jaswant-mp-a32b81378/
-- LeetCode: https://leetcode.com/u/jaswantmp/
+- GitHub: [jaswantmp](https://github.com/jaswantmp)
+- LinkedIn: [Jaswant MP](https://www.linkedin.com/in/jaswant-mp-a32b81378/)
+- LeetCode: [jaswantmp](https://leetcode.com/u/jaswantmp/)
 
 This repository is a learning project developed incrementally to build practical Django and web development skills.

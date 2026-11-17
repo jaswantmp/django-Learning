@@ -14,6 +14,12 @@ class Subject(models.Model):
         on_delete=models.CASCADE,
         related_name="subjects"
     )
-
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["name", "student"],
+                name="unique_subject_per_student"
+            )
+        ]
     def __str__(self):
         return self.name

@@ -6,7 +6,7 @@ A hands-on Django project documenting my daily learning journey in Python web de
 
 ## Project Overview
 
-The Student Management System is a Django web application that manages student records and their associated subjects. It supports CRUD operations, form validation, student result calculation, and subject management.
+The Student Management System is a Django web application that manages student records and their associated subjects. It supports CRUD operations, form validation, student result calculation, subject management, and student performance reports.
 
 ## Features
 
@@ -17,10 +17,12 @@ The Student Management System is a Django web application that manages student r
 - **Admin Search and Filters:** Search student names and filter records.
 - **Subject Management:** Associate subjects with students using `ForeignKey` relationships.
 - **Subject CRUD:** Add, update, and delete subjects from the student edit page.
-- **Duplicate Prevention:** Validate subject names to prevent duplicates for the same student.
+- **Duplicate Prevention:** Prevent duplicate subject names for the same student.
 - **Django ORM:** Filter, sort, exclude, and retrieve database records.
 - **Success Messages:** Display feedback after successful operations.
-- **Responsive Table:** Display student records in a styled HTML table.
+- **Responsive Dashboard:** Display student records, statistics, and search functionality.
+- **Student Reports:** Display student statistics and marks distribution using charts.
+- **CSV Export:** Export student records to a CSV file.
 - **Automated Testing:** Practise testing Django models and views.
 
 ## Technologies Used
@@ -30,8 +32,10 @@ The Student Management System is a Django web application that manages student r
 - SQLite
 - HTML
 - CSS
+- JavaScript
 - Django Template Language
 - Git and GitHub
+- Chart.js
 
 ## Project Structure
 
@@ -51,8 +55,9 @@ django-learning/
 │   └── templates/
 │       └── students/
 │           ├── student_home.html
-│           ├── student_form.html
-│           └── student_confirm_delete.html
+│           ├── student_register.html
+│           ├── student_delete.html
+│           └── student_reports.html
 ├── templates/
 ├── screenshots/
 ├── daily-logs/
@@ -66,7 +71,7 @@ django-learning/
 └── README.md
 ```
 
-*Note: The exact project structure may evolve as development continues. Keep the daily log path consistent with its actual location in the repository.*
+*Note: The project structure may evolve as development continues. Keep filenames and daily log paths consistent with the actual repository.*
 
 ## Setup and Installation
 
@@ -119,8 +124,8 @@ python manage.py runserver
 
 Open the application:
 
-- Student Management: [http://127.0.0.1:8000/students/](http://127.0.0.1:8000/students/)
-- Django Admin: [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)
+- **Student Management:** [http://127.0.0.1:8000/students/](http://127.0.0.1:8000/students/)
+- **Django Admin:** [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)
 
 > **Note:** The local SQLite database and its records are not included in the repository. Run migrations and create your own data after setting up the project.
 
@@ -137,24 +142,15 @@ Open the application:
 | Day 7 | Django Admin customization and ORM queries |
 | Day 8 | ForeignKey relationships and subject management |
 | Day 9 | ORM relationships, uniqueness constraints, subject validation, and form validation |
+| Day 10 | Dashboard UI improvements, modern student registration page, delete confirmation page, and student reports with charts |
 
-## Day 9 — Screenshots
+## Day 10 — Work Completed
 
-### Student Name Cannot Be Empty
-
-![Student Name Cannot Be Empty](screenshots/student_name_cannot_be_empty.png)
-
-### Student Already Exists
-
-![Student Already Exists](screenshots/student_already_exists.png)
-
-### Form Validation and ORM
-
-![Form Validation and ORM](screenshots/form_validation_orm.png)
-
-### Tests.py in Terminal
-
-![Tests.py in Terminal](screenshots/tests_py_in_terminal.png)
+- Improved the student dashboard's overall presentation.
+- Created a modern student registration interface with form validation.
+- Designed a student deletion confirmation page with Delete and Cancel options.
+- Reviewed the student reports page with statistics and marks distribution.
+- Improved the visual consistency and usability of the application.
 
 ## Key Concepts Learned
 
@@ -169,14 +165,25 @@ Open the application:
 - ORM filtering, sorting, exclusion, and aggregation
 - ForeignKey relationships
 - Database uniqueness constraints
+- Responsive HTML and CSS layouts
+- Django messages and CSRF protection
+- Displaying charts with Chart.js
 - Git version control and GitHub
 - Introduction to automated testing
+
+## Tomorrow's Work
+
+- Test student registration, updating, and deletion.
+- Verify search and filtering functionality.
+- Test CSV export and check the reports page.
+- Validate displayed statistics and chart data.
+- Identify and fix any errors or usability issues.
+- Review the project structure and update documentation where necessary.
 
 ## Future Improvements
 
 - Add authentication and role-based access.
-- Improve form styling and responsive design.
-- Strengthen subject validation and duplicate prevention.
+- Improve responsive design across all pages.
 - Add pagination and advanced student search.
 - Expand automated tests for models, views, and form submissions.
 - Improve error handling and security.
@@ -186,8 +193,8 @@ Open the application:
 
 **Jaswant MP**
 
-- GitHub: [jaswantmp](https://github.com/jaswantmp)
-- LinkedIn: [Jaswant MP](https://www.linkedin.com/in/jaswant-mp-a32b81378/)
-- LeetCode: [jaswantmp](https://leetcode.com/u/jaswantmp/)
+- **GitHub:** [jaswantmp](https://github.com/jaswantmp)
+- **LinkedIn:** [Jaswant MP](https://www.linkedin.com/in/jaswant-mp-a32b81378/)
+- **LeetCode:** [jaswantmp](https://leetcode.com/u/jaswantmp/)
 
 This repository is a learning project developed incrementally to build practical Django and web development skills.

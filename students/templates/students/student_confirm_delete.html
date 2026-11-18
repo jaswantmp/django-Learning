@@ -3,22 +3,225 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Delete Student</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Student | Student Management</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1e293b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: white;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .brand {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: #475569;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .delete-card {
+            width: 100%;
+            max-width: 480px;
+            background: white;
+            padding: 38px;
+            border-radius: 20px;
+            box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+            text-align: center;
+        }
+
+        .warning-icon {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fee2e2;
+            color: #dc2626;
+            border-radius: 50%;
+            font-size: 34px;
+        }
+
+        h1 {
+            font-size: 27px;
+            margin-bottom: 12px;
+            color: #0f172a;
+        }
+
+        .description {
+            color: #64748b;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .student-info {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 22px;
+            text-align: left;
+        }
+
+        .student-label {
+            font-size: 12px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 7px;
+        }
+
+        .student-name {
+            font-size: 19px;
+            font-weight: bold;
+            color: #0f172a;
+            overflow-wrap: anywhere;
+        }
+
+        .warning-message {
+            background: #fff7ed;
+            color: #9a3412;
+            border: 1px solid #fed7aa;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 13px 16px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: 0.2s;
+        }
+
+        .cancel-btn {
+            background: #e2e8f0;
+            color: #334155;
+        }
+
+        .cancel-btn:hover {
+            background: #cbd5e1;
+        }
+
+        .delete-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background: #b91c1c;
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            .brand {
+                font-size: 17px;
+            }
+
+            .delete-card {
+                padding: 26px 20px;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
-<body style="background-color: #f5ee72; font-family: Arial, sans-serif; padding: 20px;">
-    <h1>Delete Student</h1>
 
-    <p>
-        Are you sure you want to delete
-        <strong>{{ student.name }}</strong>?
-    </p>
+<body>
+    <header>
+        <div class="brand">Student Management</div>
+        <a class="back-link" href="{% url 'student_home' %}">
+            ← Dashboard
+        </a>
+    </header>
 
-    <form method="POST">
-        {% csrf_token %}
-        <button type="submit" style="background-color: red; color: white; padding: 10px 10px; text-decoration: none; border-radius: 5px;">Yes, Delete</button>
-    </form>
-    <br>
+    <main>
+        <section class="delete-card">
+            <div class="warning-icon">!</div>
 
-    <a href="{% url 'student_home' %}" style="background-color: gray; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Cancel</a>
+            <h1>Delete Student?</h1>
+
+            <p class="description">
+                Are you sure you want to delete this student?
+                Please review the details before continuing.
+            </p>
+
+            <div class="student-info">
+                <div class="student-label">Student Name</div>
+                <div class="student-name">{{ student.name }}</div>
+            </div>
+
+            <div class="warning-message">
+                <strong>Warning:</strong> This action cannot be undone.
+                Any subjects linked to this student will also be deleted.
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="actions">
+                    <a class="btn cancel-btn"
+                       href="{% url 'student_home' %}">
+                        Cancel
+                    </a>
+
+                    <button class="btn delete-btn" type="submit">
+                        Yes, Delete Student
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
 </body>
 </html>

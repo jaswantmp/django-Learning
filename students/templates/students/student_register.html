@@ -1,0 +1,693 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Student | Student Management</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --text: #172033;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --surface: #ffffff;
+            --background: #f5f7fc;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 32px 20px;
+            font-family: Inter, "Segoe UI", Arial, sans-serif;
+            background: var(--background);
+            color: var(--text);
+        }
+
+        .page {
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-icon {
+            display: grid;
+            place-items: center;
+            width: 46px;
+            height: 46px;
+            color: white;
+            background: linear-gradient(135deg, #6366f1, #4338ca);
+            border-radius: 14px;
+            font-size: 21px;
+            font-weight: 800;
+            box-shadow: 0 5px 14px rgba(79, 70, 229, 0.2);
+        }
+
+        .brand-name {
+            font-size: 16px;
+            font-weight: 750;
+        }
+
+        .brand-caption {
+            margin-top: 4px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .dashboard-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 15px;
+            color: #334155;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 650;
+            transition: 0.2s ease;
+        }
+
+        .dashboard-link:hover {
+            border-color: #a5b4fc;
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .intro {
+            margin-bottom: 24px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            color: var(--primary);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .eyebrow-dot {
+            width: 7px;
+            height: 7px;
+            background: #6366f1;
+            border-radius: 50%;
+        }
+
+        h1 {
+            margin: 12px 0 8px;
+            font-size: clamp(27px, 4vw, 36px);
+            letter-spacing: -1.1px;
+        }
+
+        .intro p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.7fr) minmax(230px, 0.8fr);
+            align-items: start;
+            gap: 22px;
+        }
+
+        .card {
+            min-width: 0;
+            padding: 30px;
+            background: var(--surface);
+            border: 1px solid #e8edf5;
+            border-radius: 20px;
+            box-shadow: 0 10px 35px rgba(15, 23, 42, 0.045);
+        }
+
+        .card-heading {
+            display: flex;
+            align-items: flex-start;
+            gap: 13px;
+            margin-bottom: 25px;
+        }
+
+        .heading-icon {
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            color: var(--primary);
+            background: #eef2ff;
+            border-radius: 13px;
+            font-size: 21px;
+        }
+
+        h2 {
+            margin: 2px 0 6px;
+            font-size: 19px;
+            letter-spacing: -0.3px;
+        }
+
+        .card-description {
+            margin: 0;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 21px 17px;
+        }
+
+        .field {
+            min-width: 0;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 9px;
+            color: #334155;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .required {
+            color: #ef4444;
+        }
+
+        .field input {
+            display: block;
+            width: 100%;
+            min-width: 0;
+            padding: 13px 14px;
+            color: var(--text);
+            background: #fbfcff;
+            border: 1px solid #dce3ee;
+            border-radius: 10px;
+            outline: none;
+            font: inherit;
+            font-size: 14px;
+            transition: border-color 0.2s, box-shadow 0.2s,
+                        background 0.2s;
+        }
+
+        .field input::placeholder {
+            color: #a0aabd;
+        }
+
+        .field input:hover {
+            border-color: #b8c4d7;
+        }
+
+        .field input:focus {
+            background: white;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.10);
+        }
+
+        .field-help {
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .error {
+            margin-top: 8px;
+            color: #dc2626;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .error-summary {
+            margin-bottom: 22px;
+            padding: 14px 16px;
+            color: #b91c1c;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 10px;
+            font-size: 13px;
+        }
+
+        .error-summary ul {
+            margin: 8px 0 0;
+            padding-left: 20px;
+        }
+
+        .marks-feedback {
+            display: block;
+            margin-top: 9px;
+            font-size: 12px;
+            font-weight: 650;
+            line-height: 1.5;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 29px;
+            padding-top: 23px;
+            border-top: 1px solid #edf0f6;
+        }
+
+        .btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            min-height: 44px;
+            padding: 12px 17px;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 750;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .cancel-btn {
+            color: #475569;
+            background: white;
+            border-color: var(--border);
+        }
+
+        .cancel-btn:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+        }
+
+        .submit-btn {
+            color: white;
+            background: var(--primary);
+            box-shadow: 0 5px 12px rgba(79, 70, 229, 0.16);
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:focus-visible,
+        .cancel-btn:focus-visible,
+        .dashboard-link:focus-visible {
+            outline: 3px solid #a5b4fc;
+            outline-offset: 3px;
+        }
+
+        .side-card {
+            padding: 24px;
+            color: white;
+            background: linear-gradient(150deg, #3730a3, #4f46e5 60%, #6366f1);
+            border-radius: 20px;
+            box-shadow: 0 12px 28px rgba(79, 70, 229, 0.16);
+        }
+
+        .side-icon {
+            display: grid;
+            place-items: center;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 23px;
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 14px;
+            font-size: 23px;
+        }
+
+        .side-card h2 {
+            margin-bottom: 10px;
+            font-size: 20px;
+            line-height: 1.4;
+        }
+
+        .side-card > p {
+            color: #e0e7ff;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .guide-title {
+            margin: 25px 0 15px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .guide-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 11px;
+            margin-bottom: 16px;
+        }
+
+        .guide-check {
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            width: 23px;
+            height: 23px;
+            color: #3730a3;
+            background: #c7d2fe;
+            border-radius: 7px;
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        .guide-item strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 12px;
+        }
+
+        .guide-item span {
+            display: block;
+            color: #e0e7ff;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        .side-note {
+            margin-top: 25px;
+            padding: 13px;
+            color: #eef2ff;
+            background: rgba(30, 27, 75, 0.2);
+            border-radius: 10px;
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        .footer {
+            margin-top: 24px;
+            color: #94a3b8;
+            text-align: center;
+            font-size: 11px;
+        }
+
+        @media (max-width: 760px) {
+            body {
+                padding: 22px 14px;
+            }
+
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .side-card {
+                order: 2;
+            }
+
+            .card {
+                padding: 24px;
+            }
+
+            .topbar {
+                margin-bottom: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand-caption {
+                display: none;
+            }
+
+            .brand-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .dashboard-link {
+                padding: 10px;
+                font-size: 11px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .card {
+                padding: 20px 17px;
+                border-radius: 16px;
+            }
+
+            .actions {
+                flex-direction: column-reverse;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .side-card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="page">
+
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-icon">S</div>
+                <div>
+                    <div class="brand-name">Student Management</div>
+                    <div class="brand-caption">Academic administration portal</div>
+                </div>
+            </div>
+
+            <a href="{% url 'student_home' %}" class="dashboard-link">
+                <span aria-hidden="true">←</span>
+                Back to Dashboard
+            </a>
+        </header>
+
+        <section class="intro">
+            <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                STUDENT ENROLLMENT
+            </div>
+
+            <h1>Register a new student</h1>
+
+            <p>
+                Add a student to your database by entering their
+                details below.
+            </p>
+        </section>
+
+        <div class="layout">
+
+            <section class="card">
+                <div class="card-heading">
+                    <div class="heading-icon" aria-hidden="true">♙</div>
+                    <div>
+                        <h2>Student information</h2>
+                        <p class="card-description">
+                            Complete all required fields marked with an asterisk.
+                        </p>
+                    </div>
+                </div>
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="message">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% if form.non_field_errors %}
+                    <div class="error-summary" role="alert">
+                        <strong>Please check the information entered.</strong>
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="form-grid">
+                        {% for field in form %}
+                            <div class="field">
+                                <label for="{{ field.id_for_label }}">
+                                    {{ field.label }}
+                                    {% if field.field.required %}
+                                        <span class="required">*</span>
+                                    {% endif %}
+                                </label>
+
+                                {{ field }}
+
+                                {% if field.name == "name" %}
+                                    <div class="field-help">
+                                        Enter the student's full name.
+                                    </div>
+                                {% elif field.name == "age" %}
+                                    <div class="field-help">
+                                        Enter an age between 1 and 100.
+                                    </div>
+                                {% elif field.name == "marks" %}
+                                    <div class="field-help">
+                                        Enter a score between 0 and 100.
+                                    </div>
+                                    <div id="marks-feedback"
+                                         class="marks-feedback"
+                                         aria-live="polite">
+                                    </div>
+                                {% endif %}
+
+                                {% if field.help_text %}
+                                    <div class="field-help">
+                                        {{ field.help_text }}
+                                    </div>
+                                {% endif %}
+
+                                {% for error in field.errors %}
+                                    <div class="error" role="alert">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="actions">
+                        <a href="{% url 'student_home' %}"
+                           class="btn cancel-btn">
+                            Cancel
+                        </a>
+
+                        <button type="submit" class="btn submit-btn">
+                            Register Student <span aria-hidden="true">→</span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <aside class="side-card">
+                <div class="side-icon" aria-hidden="true">✦</div>
+
+                <h2>Keep student records accurate.</h2>
+
+                <p>
+                    Enter the correct student details to keep academic
+                    records consistent and reliable.
+                </p>
+
+                <div class="guide-title">BEFORE YOU REGISTER</div>
+
+                <div class="guide-item">
+                    <div class="guide-check">✓</div>
+                    <div>
+                        <strong>Verify the name</strong>
+                        <span>Use the student's correct full name.</span>
+                    </div>
+                </div>
+
+                <div class="guide-item">
+                    <div class="guide-check">✓</div>
+                    <div>
+                        <strong>Check the age</strong>
+                        <span>Age must be between 1 and 100.</span>
+                    </div>
+                </div>
+
+                <div class="guide-item">
+                    <div class="guide-check">✓</div>
+                    <div>
+                        <strong>Enter valid marks</strong>
+                        <span>Marks must be between 0 and 100.</span>
+                    </div>
+                </div>
+
+                <div class="side-note">
+                    <strong>Note:</strong> Students scoring below 40 are
+                    classified as failing in the current report system.
+                </div>
+            </aside>
+
+        </div>
+
+        <footer class="footer">
+            Student Management System · Student Registration
+        </footer>
+
+    </main>
+
+    <script>
+        const marksInput = document.getElementById("id_marks");
+        const feedback = document.getElementById("marks-feedback");
+
+        if (marksInput && feedback) {
+            function updateMarksFeedback() {
+                const marks = marksInput.value.trim();
+
+                feedback.textContent = "";
+                feedback.style.color = "";
+
+                if (marks === "") {
+                    return;
+                }
+
+                const value = Number(marks);
+
+                if (!Number.isFinite(value) || value < 0 || value > 100) {
+                    feedback.textContent =
+                        "Enter a valid mark between 0 and 100.";
+                    feedback.style.color = "#dc2626";
+                } else if (value < 40) {
+                    feedback.textContent =
+                        "Below 40 — currently classified as Fail.";
+                    feedback.style.color = "#dc2626";
+                } else if (value < 60) {
+                    feedback.textContent =
+                        "Pass — there is room to improve.";
+                    feedback.style.color = "#b45309";
+                } else if (value < 80) {
+                    feedback.textContent =
+                        "Good performance!";
+                    feedback.style.color = "#2563eb";
+                } else {
+                    feedback.textContent =
+                        "Excellent performance!";
+                    feedback.style.color = "#15803d";
+                }
+            }
+
+            marksInput.addEventListener("input", updateMarksFeedback);
+            updateMarksFeedback();
+        }
+    </script>
+</body>
+</html>

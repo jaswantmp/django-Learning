@@ -3,17 +3,39 @@ from django import forms
 from .models import Student, Subject
 
 
+
 class StudentForm(forms.ModelForm):
-    name = forms.CharField(label="Student Name")
+    name = forms.CharField(
+        label="Student Name",
+        widget=forms.TextInput(attrs={
+            "placeholder": "Enter student's full name",
+            "autocomplete": "name",
+        })
+    )
+
     class Meta:
         model = Student
         fields = ["name", "age", "marks"]
+        widgets = {
+            "age": forms.NumberInput(attrs={
+                "placeholder": "Enter age (1–100)",
+                "min": 1,
+                "max": 100,
+            }),
+            "marks": forms.NumberInput(attrs={
+                "placeholder": "Enter marks (0–100)",
+                "min": 0,
+                "max": 100,
+            }),
+        }
 
     def clean_name(self):
         name = self.cleaned_data["name"].strip()
 
         if not name:
-            raise forms.ValidationError("Name cannot be empty.")
+            raise forms.ValidationError(
+                "Name cannot be empty."
+            )
 
         return name
 
@@ -36,6 +58,7 @@ class StudentForm(forms.ModelForm):
             )
 
         return marks
+
     def clean(self):
         cleaned_data = super().clean()
 
@@ -49,6 +72,7 @@ class StudentForm(forms.ModelForm):
                 )
 
         return cleaned_data
+
 class SubjectForm(forms.ModelForm):
     class Meta:
         model = Subject

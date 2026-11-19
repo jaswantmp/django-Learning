@@ -1,0 +1,302 @@
+
+/* =========================================
+   STUDENT MANAGEMENT SYSTEM
+   Modern SaaS Theme
+   ========================================= */
+
+/* ---------- LIGHT THEME ---------- */
+
+:root {
+    color-scheme: light;
+
+    --page-bg: #f5f7fc;
+    --surface-bg: #ffffff;
+    --surface-hover: #f8f7ff;
+
+    --text-color: #20243a;
+    --muted-color: #737b91;
+    --border-color: #e5e7f0;
+    --input-bg: #ffffff;
+
+    --primary-color: #7057e8;
+    --primary-hover: #5b43d1;
+
+    --success-bg: #e0f7eb;
+    --success-text: #13764d;
+    --danger-bg: #ffebef;
+    --danger-text: #c52e4b;
+
+    --shadow-color: rgb(25 30 65 / 6%);
+}
+
+/* ---------- DARK THEME ---------- */
+
+html.dark-mode {
+    color-scheme: dark;
+
+    --page-bg: #101522;
+    --surface-bg: #1d2636;
+    --surface-hover: #273247;
+
+    --text-color: #f1f4fc;
+    --muted-color: #a6b2c8;
+    --border-color: #354155;
+    --input-bg: #151d2c;
+
+    --primary-color: #a394ff;
+    --primary-hover: #b4a8ff;
+
+    --success-bg: #173d34;
+    --success-text: #8ce5b8;
+    --danger-bg: #492633;
+    --danger-text: #ffacbd;
+
+    --shadow-color: rgb(0 0 0 / 18%);
+
+    /* Variables used by the existing dashboard */
+    --background: var(--page-bg);
+    --surface: var(--surface-bg);
+    --text: var(--text-color);
+    --muted: var(--muted-color);
+    --border: var(--border-color);
+}
+
+/* ---------- GLOBAL ---------- */
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    background-color: var(--page-bg);
+    color: var(--text-color);
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+html.dark-mode body {
+    background-color: var(--page-bg) !important;
+    color: var(--text-color) !important;
+}
+
+/* ---------- DASHBOARD PANELS ---------- */
+
+html.dark-mode .panel,
+html.dark-mode .stat-card,
+html.dark-mode .card,
+html.dark-mode .dashboard-card,
+html.dark-mode .content-card,
+html.dark-mode .table-container,
+html.dark-mode .form-container,
+html.dark-mode .report-card,
+html.dark-mode .modal-content {
+    background-color: var(--surface-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+    box-shadow: 0 8px 28px var(--shadow-color);
+}
+
+/* ---------- HEADINGS AND TEXT ---------- */
+
+html.dark-mode h1,
+html.dark-mode h2,
+html.dark-mode h3,
+html.dark-mode h4,
+html.dark-mode .student-name,
+html.dark-mode .stat-value,
+html.dark-mode .marks,
+html.dark-mode .panel-heading,
+html.dark-mode .panel-heading strong {
+    color: var(--text-color);
+}
+
+html.dark-mode .subtitle,
+html.dark-mode .panel-description,
+html.dark-mode .stat-label,
+html.dark-mode .stat-foot,
+html.dark-mode .student-id,
+html.dark-mode .serial,
+html.dark-mode .table-footer,
+html.dark-mode .footer,
+html.dark-mode .no-subjects {
+    color: var(--muted-color) !important;
+}
+
+/* ---------- SEARCH AND FILTERS ---------- */
+
+html.dark-mode .search-box,
+html.dark-mode .toolbar select {
+    background-color: var(--input-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+html.dark-mode .search-box input,
+html.dark-mode input,
+html.dark-mode select,
+html.dark-mode textarea {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+html.dark-mode .search-box input::placeholder,
+html.dark-mode input::placeholder,
+html.dark-mode textarea::placeholder {
+    color: var(--muted-color);
+}
+
+html.dark-mode .search-box input:focus,
+html.dark-mode input:focus,
+html.dark-mode select:focus,
+html.dark-mode textarea:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 1px;
+}
+
+/* ---------- TABLE ---------- */
+
+html.dark-mode table {
+    color: var(--text-color) !important;
+    border-color: var(--border-color);
+}
+
+html.dark-mode thead {
+    background-color: #29344a !important;
+}
+
+html.dark-mode th {
+    background-color: #29344a !important;
+    color: #d9d5ff !important;
+}
+
+html.dark-mode td {
+    color: #e7ecf6;
+    border-color: var(--border-color) !important;
+}
+
+html.dark-mode tbody tr {
+    border-color: var(--border-color) !important;
+}
+
+html.dark-mode tbody tr:hover {
+    background-color: var(--surface-hover) !important;
+}
+
+/* ---------- BUTTONS AND CHIPS ---------- */
+
+html.dark-mode .record-count,
+html.dark-mode .filter-btn,
+html.dark-mode .subject-chip,
+html.dark-mode .edit-btn {
+    background-color: #342d59 !important;
+    color: #d2caff !important;
+}
+
+html.dark-mode .delete-btn {
+    background-color: #482633 !important;
+    color: #ffb3c2 !important;
+}
+
+html.dark-mode .pass {
+    background-color: var(--success-bg) !important;
+    color: var(--success-text) !important;
+}
+
+html.dark-mode .fail {
+    background-color: var(--danger-bg) !important;
+    color: var(--danger-text) !important;
+}
+
+html.dark-mode .empty-state {
+    color: var(--muted-color);
+}
+
+/* ---------- LINKS ---------- */
+
+html.dark-mode a:not(.primary-btn):not(.action-btn):not(.nav-link) {
+    color: #b7aaff;
+}
+
+/* Keep the sidebar's existing purple design */
+html.dark-mode .sidebar {
+    color: #ffffff;
+}
+
+html.dark-mode .sidebar .nav-link {
+    color: #e5e1ff;
+}
+
+html.dark-mode .sidebar .nav-link:hover,
+html.dark-mode .sidebar .nav-link.active {
+    color: #ffffff;
+}
+
+/* ---------- MESSAGES ---------- */
+
+html.dark-mode .message:not(.error) {
+    background-color: #173d34;
+    color: #a2f0c5;
+    border-color: #28624d;
+}
+
+html.dark-mode .message.error {
+    background-color: #492633;
+    color: #ffb3c2;
+    border-color: #71374a;
+}
+
+/* ---------- THEME TOGGLE ---------- */
+
+.theme-toggle {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 9999;
+
+    padding: 11px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+
+    background: var(--surface-bg);
+    color: var(--text-color);
+
+    box-shadow: 0 5px 20px var(--shadow-color);
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 760px) {
+    .theme-toggle {
+        right: 14px;
+        bottom: 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}

@@ -1,180 +1,316 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete Student | Student Management</title>
-
+     <!-- Dark mode stylesheet -->
+    <link rel="stylesheet" href="{% static 'students/css/theme.css' %}">
     <style>
+            
+        :root {
+        --danger: #dc3545;
+        --danger-hover: #bb2534;
+        --danger-soft: #fff0f1;
+        --danger-text: #a51d2d;
+        --surface-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+        }
+
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f7fb;
-            color: #1e293b;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        font-family: "Segoe UI", Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        background: var(--page-bg);
+        color: var(--text-color);
         }
 
+        /* Top navigation */
         header {
-            background: white;
-            padding: 20px 7%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #e2e8f0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 20px 7%;
+        background: var(--surface-bg);
+        border-bottom: 1px solid var(--border-color);
         }
 
         .brand {
-            font-size: 20px;
-            font-weight: bold;
-            color: #2563eb;
+        color: var(--text-color);
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: -0.4px;
         }
 
         .back-link {
-            text-decoration: none;
-            color: #475569;
-            font-size: 14px;
-            font-weight: bold;
+        color: #8065ee;
+        font-size: 15px;
+        font-weight: 700;
+        text-decoration: none;
         }
 
+        .back-link:hover {
+        text-decoration: underline;
+        }
+
+        /* Center the confirmation card */
         main {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 48px 20px;
         }
 
+        /* Confirmation card */
         .delete-card {
-            width: 100%;
-            max-width: 480px;
-            background: white;
-            padding: 38px;
-            border-radius: 20px;
-            box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
-            text-align: center;
+        width: 100%;
+        max-width: 540px;
+        padding: 38px;
+        text-align: center;
+        background: var(--surface-bg);
+        color: var(--text-color);
+        border: 1px solid var(--border-color);
+        border-radius: 22px;
+        box-shadow: var(--surface-shadow);
         }
 
+        /* Warning icon */
         .warning-icon {
-            width: 72px;
-            height: 72px;
-            margin: 0 auto 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #fee2e2;
-            color: #dc2626;
-            border-radius: 50%;
-            font-size: 34px;
+        width: 76px;
+        height: 76px;
+        margin: 0 auto 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #ffc9cf;
+        border-radius: 22px;
+        background: var(--danger-soft);
+        color: var(--danger);
+        font-size: 36px;
+        font-weight: 800;
         }
 
-        h1 {
-            font-size: 27px;
-            margin-bottom: 12px;
-            color: #0f172a;
+        /* Heading and description */
+        .delete-card h1 {
+        margin-bottom: 12px;
+        color: var(--text-color);
+        font-size: 30px;
+        line-height: 1.3;
+        letter-spacing: -0.7px;
         }
 
         .description {
-            color: #64748b;
-            font-size: 15px;
-            line-height: 1.7;
-            margin-bottom: 24px;
+        margin-bottom: 26px;
+        color: var(--muted-color);
+        font-size: 16px;
+        line-height: 1.8;
         }
 
+        /* Student details */
         .student-info {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 22px;
-            text-align: left;
+        margin-bottom: 22px;
+        padding: 20px;
+        text-align: left;
+        background: var(--page-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 14px;
         }
 
         .student-label {
-            font-size: 12px;
-            color: #64748b;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 7px;
+        margin-bottom: 7px;
+        color: var(--muted-color);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        }
+
+        .student-name {
+        color: var(--text-color);
+        font-size: 21px;
+        font-weight: 750;
+        overflow-wrap: anywhere;
+        }
+
+        /* Warning message — matches your existing HTML class */
+        .warning-message {
+        margin-bottom: 26px;
+        padding: 17px;
+        text-align: left;
+        background: #fff7e5;
+        color: #854d0e;
+        border: 1px solid #f1d08a;
+        border-radius: 12px;
+        font-size: 15px;
+        line-height: 1.8;
+        }
+
+        .warning-message strong {
+        font-weight: 800;
+        }
+
+        /* Buttons */
+        .actions {
+        display: flex;
+        gap: 14px;
+        }
+
+        .btn {
+        flex: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 49px;
+        padding: 13px 16px;
+        border: 1px solid transparent;
+        border-radius: 11px;
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 750;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.2s ease,
+                    transform 0.2s ease,
+                    box-shadow 0.2s ease;
+        }
+
+        .btn:hover {
+        transform: translateY(-2px);
+        }
+
+        .btn:focus-visible,
+        .back-link:focus-visible {
+        outline: 3px solid #a394ff;
+        outline-offset: 3px;
+        }
+
+        .cancel-btn {
+        background: var(--page-bg);
+        color: var(--text-color);
+        border-color: var(--border-color);
+        }
+
+        .cancel-btn:hover {
+        background: var(--border-color);
+        }
+
+        .delete-btn {
+        background: var(--danger);
+        color: #ffffff;
+        box-shadow: 0 5px 14px rgba(220, 53, 69, 0.2);
+        }
+
+        .delete-btn:hover {
+        background: var(--danger-hover);
+        box-shadow: 0 8px 18px rgba(220, 53, 69, 0.25);
+        }
+
+        /* Dark mode contrast */
+        html.dark-mode .delete-card {
+        background: var(--surface-bg) !important;
+        color: var(--text-color) !important;
+        border-color: var(--border-color) !important;
+        }
+
+        html.dark-mode .delete-card h1,
+        html.dark-mode .student-name {
+        color: var(--text-color) !important;
+        }
+
+        html.dark-mode .description,
+        html.dark-mode .student-label {
+        color: var(--muted-color) !important;
+        }
+
+        html.dark-mode .student-info {
+        background: #151d2c;
+        border-color: var(--border-color);
+        }
+
+        html.dark-mode .warning-message {
+        background: #392d1b;
+        color: #ffdf9c;
+        border-color: #775d2c;
+        }
+
+        html.dark-mode .warning-icon {
+        background: #492633;
+        border-color: #713342;
+        color: #ff8c9a;
+        }
+
+        html.dark-mode .cancel-btn {
+        background: #273449;
+        color: #f3f4f6;
+        border-color: #45536a;
+        }
+
+        html.dark-mode .cancel-btn:hover {
+        background: #35445c;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 600px) {
+        header {
+            padding: 18px 5%;
+        }
+
+        .brand {
+            font-size: 17px;
+        }
+
+        main {
+            padding: 28px 15px;
+        }
+
+        .delete-card {
+            padding: 27px 20px;
+            border-radius: 17px;
+        }
+
+        .delete-card h1 {
+            font-size: 26px;
+        }
+
+        .description {
+            font-size: 15px;
         }
 
         .student-name {
             font-size: 19px;
-            font-weight: bold;
-            color: #0f172a;
-            overflow-wrap: anywhere;
-        }
-
-        .warning-message {
-            background: #fff7ed;
-            color: #9a3412;
-            border: 1px solid #fed7aa;
-            border-radius: 10px;
-            padding: 12px;
-            font-size: 13px;
-            line-height: 1.6;
-            margin-bottom: 25px;
         }
 
         .actions {
-            display: flex;
-            gap: 12px;
+            flex-direction: column;
         }
 
         .btn {
-            flex: 1;
-            padding: 13px 16px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            border: none;
-            transition: 0.2s;
+            width: 100%;
+            min-height: 48px;
+        }
         }
 
-        .cancel-btn {
-            background: #e2e8f0;
-            color: #334155;
+        @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            transition: none !important;
+        }
         }
 
-        .cancel-btn:hover {
-            background: #cbd5e1;
-        }
 
-        .delete-btn {
-            background: #dc2626;
-            color: white;
-        }
-
-        .delete-btn:hover {
-            background: #b91c1c;
-        }
-
-        @media (max-width: 480px) {
-            header {
-                padding: 18px 5%;
-            }
-
-            .brand {
-                font-size: 17px;
-            }
-
-            .delete-card {
-                padding: 26px 20px;
-            }
-
-            .actions {
-                flex-direction: column;
-            }
-        }
     </style>
 </head>
 
@@ -223,5 +359,8 @@
             </form>
         </section>
     </main>
+    <!-- Dark mode functionality -->
+    <script src="{% static 'students/js/theme.js' %}"></script>
+
 </body>
 </html>
